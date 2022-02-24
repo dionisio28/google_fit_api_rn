@@ -41,10 +41,6 @@ export default function App() {
     return "#b3b3b3"
   }, [statusAPI])
 
-  React.useEffect(() => {
-    handleCheckPermission()
-  }, [])
-
   return (
     <View style={styles.container}>
       <StatusBar style="light" backgroundColor='#00aeff'  />
@@ -53,7 +49,7 @@ export default function App() {
       
         <Text style={[styles.statusAPI, {color: colorText}]} > {statusAPI} </Text>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={handleCheckPermission}>
           <Text style={styles.titleButton}>Conectar com o Google Fit</Text>
         </TouchableOpacity>
       </View>
