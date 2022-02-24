@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "GoogleFitApp",
+    "slug": "GoogleFitApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "GoogleFitApp"
+}
