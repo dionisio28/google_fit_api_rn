@@ -3,6 +3,10 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
+interface AuthGoogleFit { 
+  success: boolean
+}
+
 export default function App() {
   
   const [statusAPI, setStatusAPI] = React.useState("---")
@@ -18,9 +22,8 @@ export default function App() {
       ],
     }
     GoogleFit.authorize(options)
-      .then((authResult : any)=> {
-        console.log("AUTH RESULT", authResult)
-        if (authResult.success) {
+      .then(({success} : AuthGoogleFit)=> {
+        if (success) {
           setStatusAPI("Sucesso!");
         } else {
           setStatusAPI("Acesso negado '-'");
