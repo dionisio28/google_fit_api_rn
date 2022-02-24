@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import { Text, TouchableOpacity, View, Image } from 'react-native'
 import GoogleFit, { Scopes } from 'react-native-google-fit'
+import styles from './styles'
 
 interface AuthGoogleFit { 
   success: boolean
@@ -26,22 +27,22 @@ export default function App() {
     GoogleFit.authorize(options)
       .then(({success} : AuthGoogleFit)=> {
         if (success) {
-          setStatusAPI("Sucesso!");
+          setStatusAPI("Sucesso!")
         } else {
-          setStatusAPI("Acesso negado '-'");
+          setStatusAPI("Acesso negado '-'")
         }
       })
       .catch(() => {
-        setStatusAPI("Erro");
+        setStatusAPI("Erro")
       })
   }
 
   const colorText = React.useMemo(() => {
-    if(statusAPI ===  "Sucesso!") return "#09e022";
+    if(statusAPI ===  "Sucesso!") return "#09e022"
 
-    if(statusAPI === "Acesso negado '-'") return "#e09109";
+    if(statusAPI === "Acesso negado '-'") return "#e09109"
     
-    if(statusAPI === "Erro") return "#ff0000";
+    if(statusAPI === "Erro") return "#ff0000"
 
     return "#b3b3b3"
   }, [statusAPI])
@@ -61,68 +62,6 @@ export default function App() {
         </TouchableOpacity>
       </View>
     </View>
-  );
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fafafa',
-    fontWeight: "600",
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 18,
-    color: "#1a1a1a",
-    padding: 8,
-    fontWeight: "bold"
-  },
-  statusAPI: {
-    fontSize: 24,
-    color: "#73a9ff",
-    padding: 24,
-    fontWeight: "bold"
-  },
-  button: {
-    margin: 24,
-    padding: 12,
-    backgroundColor: "#00aeff",
-    borderRadius: 30
-  },
-  titleButton: {
-    fontSize: 16,
-    color: "#FFF",
-    fontWeight: "bold",
-    paddingHorizontal: 6
-  },
-  card: {
-    padding: 8,
-    backgroundColor: "#FFF",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 8
-  },
-  imageBackground: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    top: 1,
-    zIndex: 0,
-  },
-  blur: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    backgroundColor: "rgba(0,0,0,0.15)",
-    zIndex: 0,
-  }
-});
