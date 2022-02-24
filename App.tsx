@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import GoogleFit, { Scopes } from 'react-native-google-fit'
 
 interface AuthGoogleFit { 
   success: boolean
 }
+
+const urlImage = "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
 
 export default function App() {
   
@@ -46,6 +48,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Image source={{uri: urlImage}} style={styles.imageBackground}/>
+      <View style={styles.blur}/>
       <StatusBar style="light" backgroundColor='#00aeff'  />
       <View style={styles.card}>
         <Text style={styles.title}>CHECK FIT API STATUS</Text>
@@ -106,5 +110,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 8
+  },
+  imageBackground: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    top: 1,
+    zIndex: 0,
+  },
+  blur: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    backgroundColor: "rgba(0,0,0,0.15)",
+    zIndex: 0,
   }
 });
